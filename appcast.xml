@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+  <channel>
+    <title>Ruckus Admin</title>
+    <description>Updates for Ruckus Admin</description>
+    <link>https://github.com/spotdgtl/RuckusAdmin</link>
+    <item>
+      <title>Version 1.0.0</title>
+      <pubDate>Mon, 02 Nov 2026 23:42:06 +0000</pubDate>
+      <link>https://github.com/spotdgtl/RuckusAdmin/releases/tag/v1.0.0</link>
+      <sparkle:version>1</sparkle:version>
+      <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description>&lt;p&gt;First public release of Ruckus Admin, a native macOS app for Ruckus Unleashed.&lt;/p&gt;&lt;p&gt;- Dashboard with live throughput, RF environment and clickable summary cards&lt;br&gt;- Access points, clients, Wi-Fi networks (create, edit, delete), events and alarms, API explorer&lt;br&gt;- Every System, Administration and Services setting from the web UI&lt;br&gt;- Automatic updates via Sparkle&lt;/p&gt;&lt;p&gt;This build is signed with Developer ID but not yet notarized: if macOS blocks the first launch, allow it under System Settings &amp;gt; Privacy &amp;amp; Security.&lt;/p&gt;</description>
+      <enclosure url="https://github.com/spotdgtl/RuckusAdmin/releases/download/v1.0.0/RuckusAdmin-1.0.0.zip" length="3268419" type="application/octet-stream" sparkle:edSignature="igve/H81GIvSg0Iz49xggKnmTPIfq80KI14Ol4rU2SCBXuxVb70fytHBkUnOGfEhaGor3ptUDSUxVjq3CPImCQ==" />
+    </item>
+  </channel>
+</rss>
