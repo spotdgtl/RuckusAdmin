@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- Ruckus Admin glyph: a router body with status lights under two signal arcs. Drawn by hand for this app. -->
+  <path fill="#FFFFFF" fill-rule="evenodd" d="M 276 560 H 748 A 44 44 0 0 1 792 604 V 676 A 44 44 0 0 1 748 720 H 276 A 44 44 0 0 1 232 676 V 604 A 44 44 0 0 1 276 560 Z M 304 628 H 370 A 12 12 0 0 1 382 640 V 640 A 12 12 0 0 1 370 652 H 304 A 12 12 0 0 1 292 640 V 640 A 12 12 0 0 1 304 628 Z M 433 640 A 19 19 0 1 0 471 640 A 19 19 0 1 0 433 640 Z M 513 640 A 19 19 0 1 0 551 640 A 19 19 0 1 0 513 640 Z M 593 640 A 19 19 0 1 0 631 640 A 19 19 0 1 0 593 640 Z M 673 640 A 19 19 0 1 0 711 640 A 19 19 0 1 0 673 640 Z"/>
+  <path fill="#FFFFFF" d="M 418.66 426.66 A 132 132 0 0 1 605.34 426.66 A 22 22 0 0 1 574.23 457.77 A 88 88 0 0 0 449.77 457.77 A 22 22 0 0 1 418.66 426.66 Z"/>
+  <path fill="#FFFFFF" d="M 362.09 370.09 A 212 212 0 0 1 661.91 370.09 A 22 22 0 0 1 630.79 401.21 A 168 168 0 0 0 393.21 401.21 A 22 22 0 0 1 362.09 370.09 Z"/>
+  <path fill="#FFFFFF" d="M 488 520 A 24 24 0 1 0 536 520 A 24 24 0 1 0 488 520 Z"/>
+</svg>
