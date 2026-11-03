@@ -1,9 +1,41 @@
 # Unleashed AJAX API notes (verified against 200.15.6.212 on 2026-11-02)
 
-Transport: see README. Requests are `<ajax-request action=… comp=… updater=…>…</ajax-request>` POSTed to
+Requests are `<ajax-request action=… comp=… updater=…>…</ajax-request>` POSTed to
 `/admin/_cmdstat.jsp` (getstat/docmd) or `/admin/_conf.jsp` (getconf/setconf/addobj/updobj/delobj).
 JS camelCase keys become kebab-case attributes (`clientType` → `client-type`); keys prefixed `$$` keep their spelling.
 Root-level `checkAbility` therefore arrives as `check-ability`. Booleans serialize as `true`/`false`.
+
+## Transport
+
+- `POST /admin/login.jsp` with `username`, `password`, `ok=Log in` (form-encoded). A
+  302 means success; a 200 containing `<meta http-equiv="X-Auth" content="Unauthorized">`
+  means bad credentials. The session cookie is `-ejs-session-`.
+- The CSRF token comes from the `HTTP_X_CSRF_TOKEN` response header or the
+  `var csfrToken = '…'` script on `dashboard.jsp`, and is sent as `X-CSRF-Token`.
+- Reads: `POST /admin/_cmdstat.jsp` (`getstat`, `docmd`) and `POST /admin/_conf.jsp`
+  (`getconf`, `updobj`, …) with an XML body and
+  `Content-Type: application/x-www-form-urlencoded; charset=UTF-8`, mirroring the web UI.
+- A 302 or the Unauthorized marker on any request triggers one transparent re-login.
+- The self-signed certificate is trusted on first use and its SHA-256 fingerprint pinned
+  per host (Settings ▸ Certificate).
+
+Polling runs every 20 s by default (Settings ▸ Refresh) and makes the same requests the
+web dashboard makes once a minute. **Live mode** (Auto-refresh menu ▸ Live, or launch with
+`--live`) adds a fast lane that samples two small statistics requests every 3 s. The controller
+only updates the master AP's Ethernet port counters in real time (wireless and per-client counters
+refresh about once a minute, traffic history buckets every 60 s, background scans every 5 min), so
+the live throughput chart is computed from the WAN port counters and per-client rates are averages
+over the controller's last update interval. The regular polling continues:
+
+| Request | Purpose |
+| --- | --- |
+| `getstat stamgr` with `wlan`, `ap`, `client LEVEL=2`, `apsummary` | WLAN/AP stats, clients, fleet traffic history |
+| `getstat stamgr` with `ap LEVEL=2` | Detailed AP data (uptime, CPU, memory, interfaces) |
+| `getconf ap-list`, `getconf wlansvc-list` | Names, locations, WLAN configuration |
+| `getstat system` with `sysinfo`, `identity`, `mgmt-ip`, … | Controller identity and uptime |
+| `getstat stamgr` with `system LEVEL=1` | Network-wide totals and Ethernet ports |
+| `docmd get-connect-status` | Internet connectivity |
+| `getstat eventd` (`xevent`, `alarm`) | Events and alarms, every third poll |
 
 ## Reads
 | Purpose | Request body | Response |
